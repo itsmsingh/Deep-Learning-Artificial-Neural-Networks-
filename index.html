@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artificial Neural Networks</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #F1F1F1;
+      color: #0A2647;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #0A2647;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      color: #0A2647;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    section p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    section img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+
+    /* Interactive Demo Styles */
+    .demo-container {
+      margin: 20px 0;
+    }
+
+    .demo-container label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    .demo-container input[type="range"] {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .demo-container select {
+      width: 100%;
+      max-width: 300px;
+      padding: 5px;
+      font-size: 1rem;
+    }
+
+    .demo-container p {
+      margin: 10px 0;
+    }
+
+    /* Quiz Styles */
+    .quiz-container div {
+      margin: 20px 0;
+    }
+
+    .quiz-container p {
+      font-weight: bold;
+    }
+
+    .quiz-container button {
+      padding: 8px 16px;
+      background-color: #0A2647;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .quiz-container button:hover {
+      background-color: #1C4E80;
+    }
+
+    .quiz-container span {
+      margin-left: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #0A2647;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Artificial Neural Networks</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About ANNs</a></li>
+        <li><a href="#demo1">Interactive Demo 1</a></li>
+        <li><a href="#demo2">Interactive Demo 2</a></li>
+        <li><a href="#applications">Applications</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About ANNs Section -->
+  <section id="about">
+    <h2>What are Artificial Neural Networks?</h2>
+    <p>
+      Artificial Neural Networks (ANNs) are a subset of machine learning inspired by the structure and function of the human brain. They consist of interconnected nodes, or "neurons," organized in layers—input, hidden, and output layers. Each neuron processes data and passes it forward, allowing the network to learn patterns and make predictions.
+    </p>
+    <p>
+      ANNs are widely used in applications such as image recognition, natural language processing, financial forecasting, and medical diagnostics. By adjusting internal parameters (weights and biases), ANNs improve their accuracy over time, making them a powerful tool for solving complex problems.
+    </p>
+    <p>
+      Explore how ANNs are transforming industries and shaping the future of AI!
+    </p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Colored_neural_network.svg/1200px-Colored_neural_network.svg.png" alt="ANN Diagram">
+  </section>
+
+  <!-- Interactive ANN Visualization 1 -->
+  <section id="demo1">
+    <h2>Interactive ANN Visualization 1: Weighted Sum and Activation</h2>
+    <p>Adjust the input values and activation function to see how the output changes:</p>
+    <div class="demo-container">
+      <label for="input1">Input 1:</label>
+      <input type="range" id="input1" min="0" max="1" step="0.1" value="0.5">
+      <span id="input1-value">0.5</span>
+    </div>
+    <div class="demo-container">
+      <label for="input2">Input 2:</label>
+      <input type="range" id="input2" min="0" max="1" step="0.1" value="0.5">
+      <span id="input2-value">0.5</span>
+    </div>
+    <div class="demo-container">
+      <label for="activation">Activation Function:</label>
+      <select id="activation">
+        <option value="relu">ReLU</option>
+        <option value="sigmoid">Sigmoid</option>
+        <option value="tanh">Tanh</option>
+      </select>
+    </div>
+    <p><strong>Output:</strong> <span id="output1">0</span></p>
+  </section>
+
+  <!-- Interactive ANN Visualization 2 -->
+  <section id="demo2">
+    <h2>Interactive ANN Visualization 2: Multi-Layer ANN</h2>
+    <p>Adjust the input values and observe how the hidden layer processes data:</p>
+    <div class="demo-container">
+      <label for="input3">Input 1:</label>
+      <input type="range" id="input3" min="0" max="1" step="0.1" value="0.5">
+      <span id="input3-value">0.5</span>
+    </div>
+    <div class="demo-container">
+      <label for="input4">Input 2:</label>
+      <input type="range" id="input4" min="0" max="1" step="0.1" value="0.5">
+      <span id="input4-value">0.5</span>
+    </div>
+    <p><strong>Hidden Layer Output:</strong> <span id="hidden-output">0</span></p>
+    <p><strong>Final Output:</strong> <span id="output2">0</span></p>
+  </section>
+
+  <!-- Real-World Applications Section -->
+  <section id="applications">
+    <h2>Real-World Applications of ANNs</h2>
+    <div class="example">
+      <h3>1. Image Recognition</h3>
+      <p>
+        Artificial Neural Networks (ANNs) are widely used in image recognition tasks, such as facial recognition in smartphones, medical imaging for disease detection, and self-driving cars for object detection. For example, ANNs can analyze thousands of medical images to identify patterns indicative of diseases like cancer, enabling early diagnosis and treatment.
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Neural_network_example.svg/1200px-Neural_network_example.svg.png" alt="Image Recognition">
+    </div>
+    <div class="example">
+      <h3>2. Natural Language Processing (NLP)</h3>
+      <p>
+        ANNs power many NLP applications, such as chatbots, language translation, and sentiment analysis. For instance, chatbots like ChatGPT use ANNs to understand and generate human-like text, making them useful for customer support, virtual assistants, and more.
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Neural_network_language_model.svg/1200px-Neural_network_language_model.svg.png" alt="Natural Language Processing">
+    </div>
+  </section>
+
+  <!-- Practice Quiz Section -->
+  <section id="quiz">
+    <h2>Practice Quiz</h2>
+    <div class="quiz-container">
+      <div>
+        <p>1. What is the role of an activation function in an ANN?</p>
+        <input type="radio" name="q1" value="A"> A) To add noise to the data<br>
+        <input type="radio" name="q1" value="B"> B) To introduce non-linearity<br>
+        <input type="radio" name="q1" value="C"> C) To reduce the number of layers<br>
+        <button onclick="checkAnswer(0)">Submit</button>
+        <span id="feedback0"></span>
+      </div>
+      <div>
+        <p>2. Which of the following is a real-world application of ANNs?</p>
+        <input type="radio" name="q2" value="A"> A) Weather prediction<br>
+        <input type="radio" name="q2" value="B"> B) Image recognition<br>
+        <input type="radio" name="q2" value="C"> C) Both A and B<br>
+        <button onclick="checkAnswer(1)">Submit</button>
+        <span id="feedback1"></span>
+      </div>
+      <div>
+        <p>3. What is backpropagation used for in ANNs?</p>
+        <input type="radio" name="q3" value="A"> A) To initialize weights<br>
+        <input type="radio" name="q3" value="B"> B) To adjust weights during training<br>
+        <input type="radio" name="q3" value="C"> C) To visualize data<br>
+        <button onclick="checkAnswer(2)">Submit</button>
+        <span id="feedback2"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Resources Section -->
+  <section id="resources">
+    <h2>Additional Resources</h2>
+    <ul>
+      <li><a href="https://www.deeplearningbook.org/">Deep Learning by Ian Goodfellow</a></li>
+      <li><a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning by Michael Nielsen</a></li>
+      <li><a href="https://playground.tensorflow.org/">TensorFlow Playground</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>Created by [Your Name]</p>
+  </footer>
+
+  <script>
+    // Interactive ANN Visualization 1
+    const input1 = document.getElementById('input1');
+    const input2 = document.getElementById('input2');
+    const activation = document.getElementById('activation');
+    const output1 = document.getElementById('output1');
+    const input1Value = document.getElementById('input1-value');
+    const input2Value = document.getElementById('input2-value');
+
+    input1.addEventListener('input', updateOutput1);
+    input2.addEventListener('input', updateOutput1);
+    activation.addEventListener('change', updateOutput1);
+
+    function updateOutput1() {
+      const value1 = parseFloat(input1.value);
+      const value2 = parseFloat(input2.value);
+      const selectedActivation = activation.value;
+
+      // Weighted sum (example weights: 0.6 and 0.4)
+      const weightedSum = (value1 * 0.6) + (value2 * 0.4);
+
+      // Apply activation function
+      let result;
+      switch (selectedActivation) {
+        case 'relu':
+          result = Math.max(0, weightedSum); // ReLU
+          break;
+        case 'sigmoid':
+          result = 1 / (1 + Math.exp(-weightedSum)); // Sigmoid
+          break;
+        case 'tanh':
+          result = Math.tanh(weightedSum); // Tanh
+          break;
+        default:
+          result = weightedSum;
+      }
+
+      // Display output
+      output1.textContent = result.toFixed(2);
+      input1Value.textContent = value1.toFixed(2);
+      input2Value.textContent = value2.toFixed(2);
+    }
+
+    // Interactive ANN Visualization 2
+    const input3 = document.getElementById('input3');
+    const input4 = document.getElementById('input4');
+    const hiddenOutput = document.getElementById('hidden-output');
+    const output2 = document.getElementById('output2');
+    const input3Value = document.getElementById('input3-value');
+    const input4Value = document.getElementById('input4-value');
+
+    input3.addEventListener('input', updateOutput2);
+    input4.addEventListener('input', updateOutput2);
+
+    function updateOutput2() {
+      const value3 = parseFloat(input3.value);
+      const value4 = parseFloat(input4.value);
+
+      // Hidden layer calculation (example weights: 0.5 and 0.5)
+      const hiddenLayer = (value3 * 0.5) + (value4 * 0.5);
+
+      // Final output (example weight: 0.7)
+      const finalOutput = hiddenLayer * 0.7;
+
+      // Display outputs
+      hiddenOutput.textContent = hiddenLayer.toFixed(2);
+      output2.textContent = finalOutput.toFixed(2);
+      input3Value.textContent = value3.toFixed(2);
+      input4Value.textContent = value4.toFixed(2);
+    }
+
+    // Quiz Logic
+    const questions = [
+      { question: "What is the role of an activation function in an ANN?", answer: "B" },
+      { question: "Which of the following is a real-world application of ANNs?", answer: "C" },
+      { question: "What is backpropagation used for in ANNs?", answer: "B" }
+    ];
+
+    function checkAnswer(index) {
+      const selected = document.querySelector(`input[name="q${index + 1}"]:checked`);
+      const feedback = document.getElementById(`feedback${index}`);
+      if (selected && selected.value === questions[index].answer) {
+        feedback.innerHTML = "😊 Correct!";
+      } else {
+        feedback.innerHTML = "😢 Incorrect!";
+      }
+    }
+
+    // Initialize outputs
+    updateOutput1();
+    updateOutput2();
+  </script>
+</body>
+</html>
